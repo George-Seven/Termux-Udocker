@@ -7,7 +7,7 @@ CONTAINER_NAME="owncloud-server"
 
 case $PORT in
     ''|*[!0-9]*) PORT=2081;;
-    *) [ $PORT -gt 1023 ] && [ $PORT -lt 65536 ] || PORT="8080";;
+    *) [ $PORT -gt 1023 ] && [ $PORT -lt 65536 ] || PORT="2081";;
 esac
 
 udocker_check
