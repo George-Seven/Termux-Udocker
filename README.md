@@ -1,5 +1,7 @@
 # Description
 Correctly configures Udocker so that it works properly in Termux.
+
+**Update -** Thanks to [@IntinteDAO](https://github.com/termux/termux-packages/pull/24699), **udocker** is now officially available in Termux APT Repo. I've updated the configs to use it.
 <br>
 
 #### What's Udocker?
