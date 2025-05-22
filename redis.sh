@@ -18,12 +18,12 @@ udocker_create "$CONTAINER_NAME" "$IMAGE_NAME"
 
 DATA_DIR="$(pwd)/data-$CONTAINER_NAME"
 
-mkdir -p "$DATA_DIR"
+mkdir -p "$DATA_DIR"/data
 
 if [ -n "$1" ]; then
   udocker_run --entrypoint "bash -c" -p "$PORT:6379" "$CONTAINER_NAME" "$@"
 else
-  udocker_run --entrypoint "bash -c" -p "$PORT:6379" -e _PORT="$PORT"  -v "$DATA_DIR:/data" "$CONTAINER_NAME" ' \
+  udocker_run --entrypoint "bash -c" -p "$PORT:6379" -e _PORT="$PORT"  -v "$DATA_DIR/data:/data" "$CONTAINER_NAME" ' \
       redis-server --port "$_PORT"
   '
 fi

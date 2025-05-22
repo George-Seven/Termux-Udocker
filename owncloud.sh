@@ -18,12 +18,12 @@ udocker_create "$CONTAINER_NAME" "$IMAGE_NAME"
 
 DATA_DIR="$(pwd)/data-$CONTAINER_NAME"
 
-mkdir -p "$DATA_DIR"
+mkdir -p "$DATA_DIR"/data
 
 if [ -n "$1" ]; then
-  udocker_run --entrypoint "bash -c" -p "$PORT:8080" "$CONTAINER_NAME" "$@"
+  udocker_run --entrypoint "bash -c" -p "$PORT:8080" -e APACHE_LISTEN="$PORT" -v "$DATA_DIR/data:/mnt/data" "$CONTAINER_NAME" "$@"
 else
-  udocker_run --entrypoint "bash -c" -p "$PORT:8080" -e APACHE_LISTEN="$PORT" -v "$DATA_DIR:/mnt/data" "$CONTAINER_NAME" ' \
+  udocker_run --entrypoint "bash -c" -p "$PORT:8080" -e APACHE_LISTEN="$PORT" -v "$DATA_DIR/data:/mnt/data" "$CONTAINER_NAME" ' \
       echo -e "127.0.0.1   localhost.localdomain localhost\n::1         localhost.localdomain localhost ip6-localhost ip6-loopback\nfe00::0     ip6-localnet\nff00::0     ip6-mcastprefix\nff02::1     ip6-allnodes\nff02::2     ip6-allrouters\nff02::3     ip6-allhosts" >/etc/hosts; \
       for i in $(find /etc/entrypoint.d -type f -name "*\.sh"); do sed -i -E '\''s#(_ERROR_?LOG.*)/dev/stderr#\1/var/log/apache2/error.log#g'\'' "$i"; \
       sed -i -E '\''s#(_ACCESS_?LOG.*)/dev/stdout#\1/var/log/apache2/access.log#g'\'' "$i"; done; \

@@ -18,12 +18,12 @@ udocker_create "$CONTAINER_NAME" "$IMAGE_NAME"
 
 DATA_DIR="$(pwd)/data-$CONTAINER_NAME"
 
-mkdir -p "$DATA_DIR"
+mkdir -p "$DATA_DIR"/html
 
 if [ -n "$1" ]; then
-  udocker_run --entrypoint "bash -c" -p "$PORT:80" "$CONTAINER_NAME" "$@"
+  udocker_run --entrypoint "bash -c" -p "$PORT:80" -v "$DATA_DIR/html:/var/www/html" "$CONTAINER_NAME" "$@"
 else
-  udocker_run --entrypoint "bash -c" -p "$PORT:80" -e _PORT="$PORT" -v "$DATA_DIR:/var/www/html" "$CONTAINER_NAME" ' \
+  udocker_run --entrypoint "bash -c" -p "$PORT:80" -e _PORT="$PORT" -v "$DATA_DIR/html:/var/www/html" "$CONTAINER_NAME" ' \
       echo -e "127.0.0.1   localhost.localdomain localhost\n::1         localhost.localdomain localhost ip6-localhost ip6-loopback\nfe00::0     ip6-localnet\nff00::0     ip6-mcastprefix\nff02::1     ip6-allnodes\nff02::2     ip6-allrouters\nff02::3     ip6-allhosts" >/etc/hosts; \
       sed -i -E "s/^Listen .*/Listen $_PORT/" /etc/apache2/ports.conf &>/dev/null; \
       sed -i "s/<VirtualHost .*/<VirtualHost *:$_PORT>/" /etc/apache2/sites-enabled/000-default.conf &>/dev/null; \
