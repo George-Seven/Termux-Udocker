@@ -24,6 +24,7 @@ if [ -n "$1" ]; then
   udocker_run --entrypoint "bash -c" -p "$PORT:8080" "$CONTAINER_NAME" "$@"
 else
   udocker_run --entrypoint "bash -c" -p "$PORT:8080" -e APACHE_LISTEN="$PORT" -v "$DATA_DIR:/mnt/data" "$CONTAINER_NAME" ' \
+      echo -e "127.0.0.1   localhost.localdomain localhost\n::1         localhost.localdomain localhost ip6-localhost ip6-loopback\nfe00::0     ip6-localnet\nff00::0     ip6-mcastprefix\nff02::1     ip6-allnodes\nff02::2     ip6-allrouters\nff02::3     ip6-allhosts" >/etc/hosts; \
       for i in $(find /etc/entrypoint.d -type f -name "*\.sh"); do sed -i -E '\''s#(_ERROR_?LOG.*)/dev/stderr#\1/var/log/apache2/error.log#g'\'' "$i"; \
       sed -i -E '\''s#(_ACCESS_?LOG.*)/dev/stdout#\1/var/log/apache2/access.log#g'\'' "$i"; done; \
       if ! [ -e /usr/bin/setpriv. ]; then mv -f /usr/bin/setpriv /usr/bin/setpriv.; echo -n "#!" > /usr/bin/setpriv; echo -en "/usr/bin/sh\n/usr/bin/setpriv. \"\$@\" 2>/dev/null >/dev/null | true" >> /usr/bin/setpriv; chmod 755 /usr/bin/setpriv; fi; \
