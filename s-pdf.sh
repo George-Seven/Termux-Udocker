@@ -25,7 +25,8 @@ if [ -n "$1" ]; then
 else
   udocker_run --entrypoint "bash -c" -p "$PORT:8080" -e _PORT="$PORT" -e LANGS="en_US" -v "$DATA_DIR/trainingData:/usr/share/tessdata" -v "$DATA_DIR/extraConfigs:/configs" -v "$DATA_DIR/customFiles:/customFiles" -v "$DATA_DIR/logs:/logs" -v "$DATA_DIR/pipeline:/pipeline" "$CONTAINER_NAME" ' \
       apk add openjdk17-jre yq; \
-      yq -i ".server.host = \"0.0.0.0\" | .server.port = $_PORT" configs/custom_settings.yml; \
+      touch /configs/custom_settings.yml; \
+      yq -i ".server.host = \"0.0.0.0\" | .server.port = $_PORT" /configs/custom_settings.yml; \
       ln -nsf /usr/lib/jvm/java-17-openjdk /usr/lib/jvm/default-jvm; \
       java -jar /app.jar
   '
