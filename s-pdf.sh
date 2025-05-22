@@ -16,10 +16,19 @@ udocker_prune
 
 udocker_create "$CONTAINER_NAME" "$IMAGE_NAME"
 
+DATA_DIR="$(pwd)/data-$CONTAINER_NAME"
+
+mkdir -p "$DATA_DIR/"{trainingData,extraConfigs,customFiles,logs,pipeline}
+
 if [ -n "$1" ]; then
-  udocker_run --entrypoint "bash -c" -p "$PORT:8080" "$CONTAINER_NAME" "$@"
+  udocker_run --entrypoint "bash -c" -p "$PORT:8080" -v "$DATA_DIR/trainingData" -v "$DATA_DIR/extraConfigs" -v "$DATA_DIR/customFiles" -v "$DATA_DIR/logs" -v "$DATA_DIR/pipeline" "$CONTAINER_NAME" "$@"
 else
-  udocker_run -p "$PORT:8080" "$CONTAINER_NAME" bash -c '_PORT="'$PORT'"; mkdir -p configs && echo -e "server:\n  host: 0.0.0.0\n  port: $_PORT" > configs/custom_settings.yml; apk add openjdk17-jre; ln -nsf /usr/lib/jvm/java-17-openjdk /usr/lib/jvm/default-jvm; java -Dfile.encoding=UTF-8 -jar /app.jar'
+  udocker_run --entrypoint "bash -c" -p "$PORT:8080" -e _PORT="$PORT" -e LANGS="en_US" "$CONTAINER_NAME" ' \
+      apk add openjdk17-jre yq; \
+      yq -i ".server.host = \"0.0.0.0\" | .server.port = $_PORT" configs/custom_settings.yml; \
+      ln -nsf /usr/lib/jvm/java-17-openjdk /usr/lib/jvm/default-jvm; \
+      java -jar /app.jar
+  '
 fi
  
 exit $?
