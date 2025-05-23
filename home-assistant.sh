@@ -21,12 +21,14 @@ DATA_DIR="$(pwd)/data-$CONTAINER_NAME"
 mkdir -p "$DATA_DIR"/config
 
 if [ -n "$1" ]; then
-  udocker_run --entrypoint "bash -c" -p "$PORT:8123" -e _PORT="$PORT" -e TZ="$(get_tz)" -v "$(proot_write_tmp "$(cat "$(pwd)/libnetstub.sh")"):/.libnetstub/libnetstub.sh" -v "$(mktemp):/proc/sys/net/ipv4/ip_forward" -v "$DATA_DIR/config:/config" "$CONTAINER_NAME" "$@"
+  unset cmd
+  cmd="$*"
+  udocker_run --entrypoint "bash -c" -p "$PORT:8123" -e _PORT="$PORT" -e TZ="$(get_tz)" -v "$(proot_write_tmp "$(cat "$(pwd)/libnetstub.sh")"):/.libnetstub/libnetstub.sh" -v "$(mktemp):/proc/sys/net/ipv4/ip_forward" -v "$DATA_DIR/config:/config" "$CONTAINER_NAME" ". /.libnetstub/libnetstub.sh; $cmd"
 else
   udocker_run --entrypoint "bash -c" -p "$PORT:8123" -e _PORT="$PORT" -e TZ="$(get_tz)" -v "$(proot_write_tmp "$(cat "$(pwd)/libnetstub.sh")"):/.libnetstub/libnetstub.sh" -v "$(mktemp):/proc/sys/net/ipv4/ip_forward" -v "$DATA_DIR/config:/config" "$CONTAINER_NAME" ' \
       echo -e "127.0.0.1   localhost.localdomain localhost\n::1         localhost.localdomain localhost ip6-localhost ip6-loopback\nfe00::0     ip6-localnet\nff00::0     ip6-mcastprefix\nff02::1     ip6-allnodes\nff02::2     ip6-allrouters\nff02::3     ip6-allhosts" >/etc/hosts; \
       if [[ ! -f /.libnetstub/libnetstub.so && -f /.libnetstub/libnetstub.sh ]]; then \
-          apk add --no-cache --virtual libnetstub-deps gcc musl-dev linux-headers patch ca-certificates curl && \
+          apk add --no-cache --virtual libnetstub-deps gcc musl-dev linux-headers patch && \
           mkdir -p /.libnetstub && \
           echo "ENV=~/.rc" >> ~/.profile && \
           echo ". /.libnetstub/libnetstub.sh" | tee -a ~/.rc ~/.bashrc ~/.zshrc >/dev/null; \

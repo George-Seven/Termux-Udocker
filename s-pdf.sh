@@ -21,7 +21,9 @@ DATA_DIR="$(pwd)/data-$CONTAINER_NAME"
 mkdir -p "$DATA_DIR/"{trainingData,extraConfigs,customFiles,logs,pipeline}
 
 if [ -n "$1" ]; then
-  udocker_run --entrypoint "bash -c" -p "$PORT:8080" -e LANGS="en_US" -v "$DATA_DIR/trainingData:/usr/share/tessdata" -v "$DATA_DIR/extraConfigs:/configs" -v "$DATA_DIR/customFiles:/customFiles" -v "$DATA_DIR/logs:/logs" -v "$DATA_DIR/pipeline:/pipeline" "$CONTAINER_NAME" "$@"
+  unset cmd
+  cmd="$*"
+  udocker_run --entrypoint "bash -c" -p "$PORT:8080" -e LANGS="en_US" -v "$DATA_DIR/trainingData:/usr/share/tessdata" -v "$DATA_DIR/extraConfigs:/configs" -v "$DATA_DIR/customFiles:/customFiles" -v "$DATA_DIR/logs:/logs" -v "$DATA_DIR/pipeline:/pipeline" "$CONTAINER_NAME" "$cmd"
 else
   udocker_run --entrypoint "bash -c" -p "$PORT:8080" -e _PORT="$PORT" -e LANGS="en_US" -v "$DATA_DIR/trainingData:/usr/share/tessdata" -v "$DATA_DIR/extraConfigs:/configs" -v "$DATA_DIR/customFiles:/customFiles" -v "$DATA_DIR/logs:/logs" -v "$DATA_DIR/pipeline:/pipeline" "$CONTAINER_NAME" ' \
       apk add openjdk17-jre yq; \

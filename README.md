@@ -123,6 +123,14 @@ Connect to it at - [http://localhost:6379](http://localhost:6379)
 
 <br>
 
+#### ROS - Robot Operating System (ghcr.io/sloretz/ros:jazzy-ros-base)
+
+```
+~/Termux-Udocker/ros.sh
+```
+
+<br>
+
 ### Customize
 
 #### Change Port
