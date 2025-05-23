@@ -21,9 +21,9 @@ DATA_DIR="$(pwd)/data-$CONTAINER_NAME"
 mkdir -p "$DATA_DIR"/{config,books}
 
 if [ -n "$1" ]; then
-  udocker_run --entrypoint "bash -c" -p "$PORT:8083" -e _PORT="$PORT" -e TZ="$(get_tz)" -v "$DATA_DIR/config:/config" -v "$DATA_DIR/books:/books" "$CONTAINER_NAME" "$@"
+  udocker_run --entrypoint "bash -c" -p "$PORT:8083" -e CALIBRE_PORT="$PORT" -e TZ="$(get_tz)" -v "$DATA_DIR/config:/config" -v "$DATA_DIR/books:/books" "$CONTAINER_NAME" "$@"
 else
-  udocker_run --entrypoint "bash -c " -p "$PORT:8083" -e _PORT="$PORT" -e TZ="$(get_tz)" -v "$DATA_DIR/config:/config" -v "$DATA_DIR/books:/books" "$CONTAINER_NAME" ' \
+  udocker_run --entrypoint "bash -c " -p "$PORT:8083" -e CALIBRE_PORT="$PORT" -e TZ="$(get_tz)" -v "$DATA_DIR/config:/config" -v "$DATA_DIR/books:/books" "$CONTAINER_NAME" ' \
       ln -nsf /defaults/policy.xml /etc/ImageMagick-6/policy.xml; \
       if [[ ! -f /config/client_secrets.json ]]; then echo "{}" > /config/client_secrets.json; fi; \
       if [[ -f /usr/bin/kepubify ]] && [[ ! -x /usr/bin/kepubify ]]; then chmod +x /usr/bin/kepubify; fi; \

@@ -96,6 +96,11 @@ Connect to it at - [http://localhost:2081](http://localhost:2081)
 
 Connect to it at - [http://localhost:8031](http://localhost:8031)
 
+> [!NOTE]
+> Default Calibre-Web -  
+> username: admin  
+> password: admin123
+
 <br>
 
 #### Name: HTTPD (httpd:latest)
