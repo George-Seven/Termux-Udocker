@@ -3,7 +3,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/source.env"
 
 IMAGE_NAME="ghcr.io/sloretz/ros:jazzy-ros-base"
 
-CONTAINER_NAME="ros-server"
+CONTAINER_NAME="ros-base"
 
 udocker_check
 
@@ -23,7 +23,7 @@ else
           echo ". /.libnetstub/libnetstub.sh" | tee -a ~/.bashrc ~/.zshrc >/dev/null; \
           . /.libnetstub/libnetstub.sh; \
       fi; \
-       /.libnetstub/libnetstub.sh; \
+       . /.libnetstub/libnetstub.sh; \
       exec /ros_entrypoint.sh bash
   '
 fi

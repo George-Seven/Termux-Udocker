@@ -58,7 +58,7 @@ Connect to it at - [http://localhost:8080](http://localhost:8080)
 
 <br>
 
-#### Name: Home-Assistant (homeassistant/home-assistant)
+#### Name: Home-Assistant (homeassistant/home-assistant:latest)
 
 ```
 ~/Termux-Udocker/home-assistant.sh
@@ -88,7 +88,7 @@ Connect to it at - [http://localhost:2081](http://localhost:2081)
 
 <br>
 
-#### Name: Calibre-Web (lscr.io/linuxserver/calibre)
+#### Name: Calibre-Web (lscr.io/linuxserver/calibre:latest)
 
 ```
 ~/Termux-Udocker/calibre-web.sh
@@ -120,6 +120,16 @@ Connect to it at - [http://localhost:2082](http://localhost:2082)
 ```
 
 Connect to it at - [http://localhost:6379](http://localhost:6379)
+
+<br>
+
+#### Name: Jellyfin (georgeseven/jellyfin:latest)
+
+```
+~/Termux-Udocker/jellyfin.sh
+```
+
+Connect to it at - [http://localhost:8096](http://localhost:8096)
 
 <br>
 
