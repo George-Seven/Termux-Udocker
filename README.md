@@ -129,3 +129,32 @@ To override the default startup commands, append your own commands after the scr
 ```
 
 <br>
+
+### Tips
+
+#### List containers
+
+```
+udocker ps
+```
+
+#### Remove containers
+
+```
+udocker rm "container_name"
+```
+
+#### List images
+
+```
+udocker images
+```
+
+#### Remove images
+
+```
+udocker rmi "image_name"
+```
+
+<br>
+
