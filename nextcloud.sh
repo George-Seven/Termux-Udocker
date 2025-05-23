@@ -7,7 +7,7 @@ CONTAINER_NAME="nextcloud-server"
 
 case $PORT in
     ''|*[!0-9]*) PORT=2080;;
-    *) [ $PORT -gt 1023 ] && [ $PORT -lt 65536 ] || PORT="2080";;
+    *) [ $PORT -gt 1023 ] && [ $PORT -lt 65536 ] || PORT=2080;;
 esac
 
 udocker_check

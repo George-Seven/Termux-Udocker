@@ -88,6 +88,16 @@ Connect to it at - [http://localhost:2081](http://localhost:2081)
 
 <br>
 
+#### Name: Calibre-Web (lscr.io/linuxserver/calibre)
+
+```
+~/Termux-Udocker/calibre-web.sh
+```
+
+Connect to it at - [http://localhost:8031](http://localhost:2081)
+
+<br>
+
 #### Name: HTTPD (httpd:latest)
 
 ```

@@ -7,7 +7,7 @@ CONTAINER_NAME="httpd-server"
 
 case $PORT in
     ''|*[!0-9]*) PORT=2082;;
-    *) [ $PORT -gt 1023 ] && [ $PORT -lt 65536 ] || PORT="2082";;
+    *) [ $PORT -gt 1023 ] && [ $PORT -lt 65536 ] || PORT=2082;;
 esac
 
 udocker_check

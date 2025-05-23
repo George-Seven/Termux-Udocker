@@ -7,7 +7,7 @@ CONTAINER_NAME="redis-server"
 
 case $PORT in
     ''|*[!0-9]*) PORT=6379;;
-    *) [ $PORT -gt 1023 ] && [ $PORT -lt 65536 ] || PORT="6379";;
+    *) [ $PORT -gt 1023 ] && [ $PORT -lt 65536 ] || PORT=6379;;
 esac
 
 udocker_check
