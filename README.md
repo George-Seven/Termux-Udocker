@@ -48,7 +48,16 @@ cd ~/Termux-Udocker; git pull
 
 Here are example scripts provided for some popular Docker images -
 
-#### Name: Stirling PDF (frooodle/s-pdf:latest)
+> [!NOTE]
+> Popular Docker repos provide 64-bit images, but not all of them provide the older 32-bit images.
+>
+> Running `uname -m`, if it shows 64, then your phone is 64-bit. Which means it'll work for everthing given below.
+>
+> You can still check if the repo supports 32-bit by checking the tag link next to the name.
+
+<br>
+
+#### Name: Stirling PDF ([frooodle/s-pdf:latest](https://hub.docker.com/r/frooodle/s-pdf/tags))
 
 ```
 ~/Termux-Udocker/s-pdf.sh
@@ -58,7 +67,7 @@ Connect to it at - [http://localhost:8080](http://localhost:8080)
 
 <br>
 
-#### Name: Home-Assistant (homeassistant/home-assistant:latest)
+#### Name: Home-Assistant ([homeassistant/home-assistant:latest](https://hub.docker.com/r/homeassistant/home-assistant/tags))
 
 ```
 ~/Termux-Udocker/home-assistant.sh
@@ -68,7 +77,7 @@ Connect to it at - [http://localhost:8123](http://localhost:8123)
 
 <br>
 
-#### Name: Nextcloud (nextcloud:latest)
+#### Name: Nextcloud ([nextcloud:latest](https://hub.docker.com/_/nextcloud/tags))
 
 ```
 ~/Termux-Udocker/nextcloud.sh
@@ -78,7 +87,7 @@ Connect to it at - [http://localhost:2080](http://localhost:2080)
 
 <br>
 
-#### Name: ownCloud (owncloud/server:latest)
+#### Name: ownCloud ([owncloud/server:latest](https://hub.docker.com/_/owncloud/tags))
 
 ```
 ~/Termux-Udocker/owncloud.sh
@@ -88,7 +97,7 @@ Connect to it at - [http://localhost:2081](http://localhost:2081)
 
 <br>
 
-#### Name: Calibre-Web (lscr.io/linuxserver/calibre:latest)
+#### Name: Calibre-Web ([lscr.io/linuxserver/calibre:latest](https://hub.docker.com/r/linuxserver/calibre-web/tags))
 
 ```
 ~/Termux-Udocker/calibre-web.sh
@@ -103,7 +112,7 @@ Connect to it at - [http://localhost:8031](http://localhost:8031)
 
 <br>
 
-#### Name: HTTPD (httpd:latest)
+#### Name: HTTPD ([httpd:latest](https://hub.docker.com/_/httpd/tags))
 
 ```
 ~/Termux-Udocker/httpd.sh
@@ -113,7 +122,7 @@ Connect to it at - [http://localhost:2082](http://localhost:2082)
 
 <br>
 
-#### Name: Redis (redis:latest)
+#### Name: Redis ([redis:latest](https://hub.docker.com/_/redis/tags))
 
 ```
 ~/Termux-Udocker/redis.sh
@@ -123,7 +132,7 @@ Connect to it at - [http://localhost:6379](http://localhost:6379)
 
 <br>
 
-#### Name: Jellyfin (georgeseven/jellyfin:latest)
+#### Name: Jellyfin ([georgeseven/jellyfin:latest](https://hub.docker.com/r/georgeseven/jellyfin/tags))
 
 ```
 ~/Termux-Udocker/jellyfin.sh
@@ -133,7 +142,7 @@ Connect to it at - [http://localhost:8096](http://localhost:8096)
 
 <br>
 
-#### ROS - Robot Operating System (ghcr.io/sloretz/ros:jazzy-ros-base)
+#### ROS - Robot Operating System ([ghcr.io/sloretz/ros:jazzy-ros-base](https://hub.docker.com/_/ros/tags))
 
 ```
 ~/Termux-Udocker/ros.sh
