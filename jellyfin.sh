@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 source "$(dirname "${BASH_SOURCE[0]}")/source.env"
 
-IMAGE_NAME="georgeseven/jellyfin"
+IMAGE_NAME="jellyfin/jellyfin"
 
 CONTAINER_NAME="jellyfin-server"
 
@@ -56,7 +56,7 @@ else
           mkdir -p /.libnetstub && \
           echo ". /.libnetstub/libnetstub.sh" | tee -a ~/.bashrc ~/.zshrc >/dev/null; \
           . /.libnetstub/libnetstub.sh; \
-          apt remove -y gcc libc6-dev && apt clean -y && apt autoclean -y; \
+          apt remove -y gcc libc6-dev && apt autoremove -y && apt clean -y && apt autoclean -y; \
       fi; \
       . /.libnetstub/libnetstub.sh; \
       mkdir -p /config/config; \
@@ -65,7 +65,7 @@ else
       fi; \
       command -v xmlstarlet &>/dev/null || { apt update && apt install -y --no-install-recommends xmlstarlet; }; \
       xmlstarlet ed --inplace -u "//InternalHttpPort" -v "$_PORT" -u "//PublicHttpPort" -v "$_PORT" /config/config/network.xml &>/dev/null; \
-      exec /jellyfin/jellyfin
+      exec /jellyfin/jellyfin --nonetchange
   '
 fi
 

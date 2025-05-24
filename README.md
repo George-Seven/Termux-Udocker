@@ -142,7 +142,7 @@ Connect to it at - [http://localhost:6379](http://localhost:6379)
 
 <br>
 
-#### Name: Jellyfin ([georgeseven/jellyfin:latest](https://hub.docker.com/r/georgeseven/jellyfin/tags))
+#### Name: Jellyfin ([jellyfin/jellyfin:latest](https://hub.docker.com/r/jellyfin/jellyfin/tags))
 
 ```
 ~/Termux-Udocker/jellyfin.sh
