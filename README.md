@@ -25,7 +25,7 @@ https://github.com/indigo-dc/udocker
 In Termux -
 
 ```
-pkg i git -y && git clone --depth 1 https://github.com/George-Seven/Termux-Udocker ~/Termux-Udocker; bash ~/Termux-Udocker/install_udocker.sh
+pkg i git -y && git clone --depth 1 https://github.com/George-Seven/Termux-Udocker ~/Termux-Udocker; git -C ~/Termux-Udocker pull; bash ~/Termux-Udocker/install_udocker.sh
 ```
 
 And done.
@@ -51,7 +51,7 @@ Here are example scripts provided for some popular Docker images -
 > [!NOTE]
 > Popular Docker repos provide 64-bit images, but not all of them provide the older 32-bit images.
 >
-> Running `uname -m`, if it shows 64, then your phone is 64-bit. Which means it'll work for everthing given below.
+> Running `uname -m`, if it shows 64, then your phone is 64-bit. Which means it'll work for everything given below.
 >
 > You can still check if the repo supports 32-bit by checking the tag link next to the name.
 
