@@ -77,6 +77,16 @@ Connect to it at - [http://localhost:8123](http://localhost:8123)
 
 <br>
 
+#### Name: Jupyter ([quay.io/jupyter/base-notebook:latest](https://hub.docker.com/r/jupyter/base-notebook/tags))
+
+```
+~/Termux-Udocker/jupyter.sh
+```
+
+Connect to it at - [http://localhost:8888](http://localhost:8888)
+
+<br>
+
 #### Name: Nextcloud ([nextcloud:latest](https://hub.docker.com/_/nextcloud/tags))
 
 ```
