@@ -158,7 +158,7 @@ Connect to it at - [http://localhost:8096](http://localhost:8096)
 ~/Termux-Udocker/puter.sh
 ```
 
-Connect to it at - [http://localhost:4100](http://localhost:4100)
+Connect to it at - [http://puter.localhost:4100](http://puter.localhost:4100)
 
 <br>
 
