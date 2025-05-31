@@ -152,6 +152,16 @@ Connect to it at - [http://localhost:8096](http://localhost:8096)
 
 <br>
 
+#### Name: Puter ([ghcr.io/heyputer/puter:latest](https://github.com/heyputer/puter/pkgs/container/puter))
+
+```
+~/Termux-Udocker/puter.sh
+```
+
+Connect to it at - [http://localhost:4100](http://localhost:4100)
+
+<br>
+
 #### ROS - Robot Operating System ([ghcr.io/sloretz/ros:jazzy-ros-base](https://hub.docker.com/_/ros/tags))
 
 ```
