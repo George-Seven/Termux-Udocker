@@ -1,6 +1,8 @@
 #!/data/data/com.termux/files/usr/bin/bash
 source "$(dirname "${BASH_SOURCE[0]}")/source.env"
 
+cd "$(dirname "${BASH_SOURCE[0]}")"
+
 IMAGE_NAME="homeassistant/home-assistant"
 
 CONTAINER_NAME="home-assistant-server"

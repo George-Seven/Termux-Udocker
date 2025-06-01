@@ -1,6 +1,8 @@
 #!/data/data/com.termux/files/usr/bin/bash
 source "$(dirname "${BASH_SOURCE[0]}")/source.env"
 
+cd "$(dirname "${BASH_SOURCE[0]}")"
+
 IMAGE_NAME="ghcr.io/heyputer/puter"
 
 CONTAINER_NAME="puter-server"
