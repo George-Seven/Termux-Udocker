@@ -1,6 +1,8 @@
 #!/data/data/com.termux/files/usr/bin/bash
 source "$(dirname "${BASH_SOURCE[0]}")/source.env"
 
+cd "$(dirname "${BASH_SOURCE[0]}")"
+
 IMAGE_NAME="redis"
 
 CONTAINER_NAME="redis-server"
