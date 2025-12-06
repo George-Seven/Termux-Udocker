@@ -24,7 +24,7 @@ mkdir -p "$DATA_DIR"/{config,cache}
 
 rm -rf /sdcard/.test_has_read_write_media
 
-MEDIA_DIR_CONFIG=""
+# MEDIA_DIR_CONFIG=""
 
 if ! touch /sdcard/.test_has_read_write_media &>/dev/null; then
     yes | termux-setup-storage &>/dev/null
@@ -33,7 +33,7 @@ fi
 
 if touch /sdcard/.test_has_read_write_media &>/dev/null; then
     mkdir -p /sdcard/{Download,DCIM,Movies,Music}
-    MEDIA_DIR_CONFIG="-v /sdcard/Download -v /sdcard/DCIM -v /sdcard/Movies -v /sdcard/Music"
+    MEDIA_DIR_CONFIG=" -v /sdcard/Download -v /sdcard/DCIM -v /sdcard/Movies -v /sdcard/Music "
     echo "Mounting the following media directories -"
     echo "  /sdcard/Download"
     echo "  /sdcard/DCIM"
