@@ -573,7 +573,7 @@ echo '
 $(load_libnetstub)
 
 if [ -f /.libnetstub/libnetstub.so ]; then
-    export LD_PRELOAD="/.libnetstub/libnetstub.so"
+    export LD_PRELOAD="/.libnetstub/libnetstub.so:$LD_PRELOAD"
 fi
 
 unset load_libnetstub

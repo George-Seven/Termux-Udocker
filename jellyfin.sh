@@ -46,9 +46,10 @@ rm -rf /sdcard/.test_has_read_write_media
 if [ -n "$1" ]; then
   unset cmd
   cmd="$*"
-  udocker_run --entrypoint "bash -c" -p "$PORT:8096" -e DOTNET_GCHeapHardLimit="1C0000000" -v "$(proot_write_tmp "$(cat "$(pwd)/libnetstub.sh")"):/.libnetstub/libnetstub.sh" -v "$DATA_DIR/config:/config" -v "$DATA_DIR/cache:/cache" $MEDIA_DIR_CONFIG "$CONTAINER_NAME" ". /.libnetstub/libnetstub.sh; $cmd"
+  udocker_run --entrypoint "bash -c" -p "$PORT:8096" -e DOTNET_GCHeapHardLimit="1C0000000" -e LD_PRELOAD= -v "$(proot_write_tmp "$(cat "$(pwd)/libnetstub.sh")"):/.libnetstub/libnetstub.sh" -v "$DATA_DIR/config:/config" -v "$DATA_DIR/cache:/cache" $MEDIA_DIR_CONFIG "$CONTAINER_NAME" "export LD_PRELOAD=/usr/lib/jellyfin/libjemalloc.so.2; . /.libnetstub/libnetstub.sh; $cmd"
 else
-  udocker_run --entrypoint "bash -c" -p "$PORT:8096" -e _PORT="$PORT" -e DOTNET_GCHeapHardLimit="1C0000000" -v "$(proot_write_tmp "$(cat "$(pwd)/libnetstub.sh")"):/.libnetstub/libnetstub.sh" -v "$DATA_DIR/config:/config" -v "$DATA_DIR/cache:/cache" $MEDIA_DIR_CONFIG "$CONTAINER_NAME" ' \
+  udocker_run --entrypoint "bash -c" -p "$PORT:8096" -e _PORT="$PORT" -e DOTNET_GCHeapHardLimit="1C0000000" -e LD_PRELOAD= -v "$(proot_write_tmp "$(cat "$(pwd)/libnetstub.sh")"):/.libnetstub/libnetstub.sh" -v "$DATA_DIR/config:/config" -v "$DATA_DIR/cache:/cache" $MEDIA_DIR_CONFIG "$CONTAINER_NAME" ' \
+      export LD_PRELOAD=/usr/lib/jellyfin/libjemalloc.so.2; \
       echo -e "127.0.0.1   localhost.localdomain localhost\n::1         localhost.localdomain localhost ip6-localhost ip6-loopback\nfe00::0     ip6-localnet\nff00::0     ip6-mcastprefix\nff02::1     ip6-allnodes\nff02::2     ip6-allrouters\nff02::3     ip6-allhosts" >/etc/hosts; \
       if [[ ! -f /.libnetstub/libnetstub.so && -f /.libnetstub/libnetstub.sh ]]; then \
           export DEBIAN_FRONTEND=noninteractive && \
