@@ -25,7 +25,7 @@ mkdir -p "$DATA_DIR"/data
 if [ -n "$1" ]; then
   unset cmd
   cmd="$*"
-  udocker_run --entrypoint "bash -c" -p "$PORT:6379" "$CONTAINER_NAME" "$@cmd"
+  udocker_run --entrypoint "bash -c" -p "$PORT:6379" "$CONTAINER_NAME" "$cmd"
 else
   udocker_run --entrypoint "bash -c" -p "$PORT:6379" -e _PORT="$PORT"  -v "$DATA_DIR/data:/data" "$CONTAINER_NAME" ' \
       redis-server --port "$_PORT"

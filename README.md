@@ -152,6 +152,20 @@ Connect to it at - [http://localhost:8096](http://localhost:8096)
 
 <br>
 
+#### Name: JDownloader ([antlafarge/jdownloader:dev-alpine-openjdk17](https://hub.docker.com/r/antlafarge/jdownloader/tags))
+
+```
+JD_EMAIL="your_email" JD_PASSWORD="your_password" JD_DEVICENAME="my_mobile" ~/Termux-Udocker/jdownloader.sh
+```
+
+Connect to it at - [https://my.jdownloader.org/](https://my.jdownloader.org/) or [Android client](https://play.google.com/store/apps/details?id=com.simonsturge.myjdownloader).
+
+> [!NOTE]
+> For authentication, replace `your_email` with login email, and `your_password` with login password.
+> Downloads and configs stored in folder Downloads/JDownloader
+
+<br>
+
 #### Name: Puter ([ghcr.io/heyputer/puter:latest](https://github.com/heyputer/puter/pkgs/container/puter))
 
 ```
