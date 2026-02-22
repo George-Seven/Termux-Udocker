@@ -162,6 +162,7 @@ Connect to it at - [https://my.jdownloader.org/](https://my.jdownloader.org/) or
 
 > [!NOTE]
 > For authentication, replace `your_email` with login email, and `your_password` with login password.  
+> 
 > Downloads and configs stored in folder Downloads/JDownloader
 
 <br>
