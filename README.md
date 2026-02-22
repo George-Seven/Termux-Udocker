@@ -161,7 +161,7 @@ JD_EMAIL="your_email" JD_PASSWORD="your_password" JD_DEVICENAME="my_mobile" ~/Te
 Connect to it at - [https://my.jdownloader.org/](https://my.jdownloader.org/) or [Android client](https://play.google.com/store/apps/details?id=com.simonsturge.myjdownloader).
 
 > [!NOTE]
-> For authentication, replace `your_email` with login email, and `your_password` with login password.
+> For authentication, replace `your_email` with login email, and `your_password` with login password.  
 > Downloads and configs stored in folder Downloads/JDownloader
 
 <br>
