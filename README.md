@@ -207,6 +207,24 @@ To override the default startup commands, append your own commands after the scr
 
 <br>
 
+#### docker_run commands - hybridized
+
+Set an alias -
+```
+alias docker_run='~/Termux-Udocker/docker_run.sh'
+```
+Pattern -
+```
+docker_run [docker_options] --name <container_name> <image[:tag]>
+docker_run [docker_options] --name <container_name> --entrypoint <command> <image[:tag]> [arguments...]
+```
+Example -
+```
+docker_run -p 8080:8080 -v "/data/data/com.termux/files/home/Termux-Udocker/data-registry:/var/log/nginx" -e NGINX_LISTEN_PORT=8080 -e REGISTRY_URL=http://localhost:5000 --name registry joxit/docker-registry-ui
+```
+
+<br>
+
 ### Tips
 
 #### List containers
